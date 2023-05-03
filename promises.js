@@ -66,15 +66,39 @@
 
 // Create a promise version of addevent Listener
 
-const button = document.querySelector("button");
+// const button = document.querySelector("button");
 
-addEventListenerPromise(button, "click").then((e) => {
-  console.log(e);
-  console.log("clicked");
-});
+// addEventListenerPromise(button, "click").then((e) => {
+//   console.log(e);
+//   console.log("clicked");
+// });
 
-function addEventListenerPromise(element, method) {
-  return new Promise((resolve, reject) => {
-    element.addEventListener(method, resolve);
-  });
-}
+// function addEventListenerPromise(element, method) {
+//   return new Promise((resolve, reject) => {
+//     element.addEventListener(method, resolve);
+//   }  );
+// }
+
+
+
+
+
+// ASYNC & AWAIT
+
+
+
+function setTimeoutPromise(duration) {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, duration);
+    });
+  }
+
+async function doStuff(){
+    await setTimeoutPromise(250)
+    console.log("1")
+    await setTimeoutPromise(2000)
+    console.log("2")
+} 
+
+
+doStuff()
