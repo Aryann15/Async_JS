@@ -96,13 +96,13 @@
 
 // doStuff()
 
-function setTimeoutPromise(duration) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(`ypu waited ${duration}`);
-    }, duration);
-  });
-}
+// function setTimeoutPromise(duration) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(`ypu waited ${duration}`);
+//     }, duration);
+//   });
+// }
 
 // async function doStuff() {
 //   const message = await setTimeoutPromise(250);
@@ -118,17 +118,48 @@ function setTimeoutPromise(duration) {
 
 //usinf try and catch here
 
-async function doStuff() {
-  try{
-    const message = await setTimeoutPromise(250);
-    console.log("message");
-    console.log("1");
-    const message2 = await setTimeoutPromise(2000);
-    console.log("message2");
-    console.log("2");
-  } catch(error){
-    console.error("error")
-  } 
-  }
+// async function doStuff() {
+//   try{
+//     const message = await setTimeoutPromise(250);
+//     console.log("message");
+//     console.log("1");
+//     const message2 = await setTimeoutPromise(2000);
+//     console.log("message2");
+//     console.log("2");
+//   } catch(error){
+//     console.error("error")
+//   } 
+//   }
   
-  doStuff();
+//   doStuff();
+
+
+function getValueWithDelay(value,delay){
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            resolve(value)
+        }, delay);
+    })
+}
+
+function getValueWithDelayError(value,delay){
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            reject("error")
+        }, delay);
+    })
+}
+
+
+async function assignment(){
+    try{
+        const val =await getValueWithDelay(10,1000)
+        console.log(val)
+    } catch(e){
+        console.error(e)
+    }  finally{                   //executes no matter what
+        console.log("finally")
+    }
+}
+
+assignment()
