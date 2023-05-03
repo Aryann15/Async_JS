@@ -22,12 +22,24 @@
 
 //Async now
 
-setTimeoutPromise(2000).then(()=>{
-console.log("here")
-})
+// setTimeoutPromise(2000).then(()=>{
+// console.log("here")
+// })
 
-function setTimeoutPromise(duration){
-    return new Promise((resolve,reject) => {
-        setTimeout(resolve,duration)
-    })
-}
+// function setTimeoutPromise(duration){
+//     return new Promise((resolve,reject) => {
+//         setTimeout(resolve,duration)
+//     })
+// }
+
+//callback hells= complex code
+
+setTimeout(()=>{
+    console.log("1")
+    setTimeout(()=>{
+        console.log("2")
+        setTimeout(()=>{
+            console.log("3")
+        },3000)
+    },2000)
+},1000)
