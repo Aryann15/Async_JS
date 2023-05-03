@@ -1,6 +1,6 @@
 //better version of callback
 //just like a real life promise
-//syntax 
+//syntax
 
 // const promise = new Promise ((resolve,reject)=>{
 //     const sum =1+1
@@ -10,7 +10,6 @@
 //         reject('Error')
 //     }
 // })
-
 
 // promise.then(message=>{
 //     console.log(message)
@@ -34,12 +33,33 @@
 
 //callback hells= complex code
 
-setTimeout(()=>{
-    console.log("1")
-    setTimeout(()=>{
-        console.log("2")
-        setTimeout(()=>{
-            console.log("3")
-        },3000)
-    },2000)
-},1000)
+// setTimeout(()=>{
+//     console.log("1")
+//     setTimeout(()=>{
+//         console.log("2")
+//         setTimeout(()=>{
+//             console.log("3")
+//         },3000)
+//     },2000)
+// },1000)
+
+//how promises can solve callback hell
+
+setTimeoutPromise(1000)
+  .then(() => {
+    console.log("1");
+    return setTimeoutPromise(2000);
+  })
+  .then(() => {
+    console.log("2");
+    return setTimeoutPromise(3000);
+  })
+  .then(() => {
+    console.log("3");
+  });
+
+function setTimeoutPromise(duration) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, duration);
+  });
+}
