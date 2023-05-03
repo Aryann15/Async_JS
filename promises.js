@@ -79,26 +79,38 @@
 //   }  );
 // }
 
-
-
-
-
 // ASYNC & AWAIT
 
+// function setTimeoutPromise(duration) {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(resolve, duration);
+//     });
+//   }
 
+// async function doStuff(){
+//     await setTimeoutPromise(250)
+//     console.log("1")
+//     await setTimeoutPromise(2000)
+//     console.log("2")
+// }
+
+// doStuff()
 
 function setTimeoutPromise(duration) {
-    return new Promise((resolve, reject) => {
-      setTimeout(resolve, duration);
-    });
-  }
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(`ypu waited ${duration}`);
+    }, duration);
+  });
+}
 
-async function doStuff(){
-    await setTimeoutPromise(250)
-    console.log("1")
-    await setTimeoutPromise(2000)
-    console.log("2")
-} 
+async function doStuff() {
+  const message = await setTimeoutPromise(250);
+  console.log("message");
+  console.log("1");
+  const message2 = await setTimeoutPromise(2000);
+  console.log("message2");
+  console.log("2");
+}
 
-
-doStuff()
+doStuff();
