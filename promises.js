@@ -45,21 +45,36 @@
 
 //how promises can solve callback hell
 
-setTimeoutPromise(1000)
-  .then(() => {
-    console.log("1");
-    return setTimeoutPromise(2000);
-  })
-  .then(() => {
-    console.log("2");
-    return setTimeoutPromise(3000);
-  })
-  .then(() => {
-    console.log("3");
-  });
+// setTimeoutPromise(1000)
+//   .then(() => {
+//     console.log("1");
+//     return setTimeoutPromise(2000);
+//   })
+//   .then(() => {
+//     console.log("2");
+//     return setTimeoutPromise(3000);
+//   })
+//   .then(() => {
+//     console.log("3");
+//   });
 
-function setTimeoutPromise(duration) {
+// function setTimeoutPromise(duration) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(resolve, duration);
+//   });
+// }
+
+// Create a promise version of addevent Listener
+
+const button = document.querySelector("button");
+
+addEventListenerPromise(button, "click").then((e) => {
+  console.log(e);
+  console.log("clicked");
+});
+
+function addEventListenerPromise(element, method) {
   return new Promise((resolve, reject) => {
-    setTimeout(resolve, duration);
+    element.addEventListener(method, resolve);
   });
 }
