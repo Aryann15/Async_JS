@@ -104,13 +104,31 @@ function setTimeoutPromise(duration) {
   });
 }
 
-async function doStuff() {
-  const message = await setTimeoutPromise(250);
-  console.log("message");
-  console.log("1");
-  const message2 = await setTimeoutPromise(2000);
-  console.log("message2");
-  console.log("2");
-}
+// async function doStuff() {
+//   const message = await setTimeoutPromise(250);
+//   console.log("message");
+//   console.log("1");
+//   const message2 = await setTimeoutPromise(2000);
+//   console.log("message2");
+//   console.log("2");
+// }
 
-doStuff();
+// doStuff();
+
+
+//usinf try and catch here
+
+async function doStuff() {
+  try{
+    const message = await setTimeoutPromise(250);
+    console.log("message");
+    console.log("1");
+    const message2 = await setTimeoutPromise(2000);
+    console.log("message2");
+    console.log("2");
+  } catch(error){
+    console.error("error")
+  } 
+  }
+  
+  doStuff();
