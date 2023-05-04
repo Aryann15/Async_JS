@@ -173,16 +173,34 @@
 
 //async await version
 
-async function api(){
-    try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/users")\
-    const data = await response.json()
-    if(response.ok) //checks if the response is true of false
-    {console.log(users.map(user=>user.name))
-    }
-    else{
-        console.log("FAILURE")
-    } }catch (e){
-    console.log("error")   //catch when to display error when we might enconter internet issues
-    }}
-    api()
+// async function api(){
+//     try {
+//         const response = await fetch("https://jsonplaceholder.typicode.com/users")\
+//     const user = await response.json()
+//     if(response.ok) //checks if the response is true of false
+//     {console.log(users.map(user=>user.name))
+//     }
+//     else{
+//         console.log("FAILURE")
+//     } }catch (e){
+//     console.log("error")   //catch when to display error when we might enconter internet issues
+//     }}
+//     api()
+
+//send data to the server
+
+async function api() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify({
+      title: "NEW POST",
+    }),
+  });
+  const post = await response.json();
+  console.log(post);
+}
+api();
