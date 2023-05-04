@@ -115,7 +115,6 @@
 
 // doStuff();
 
-
 //usinf try and catch here
 
 // async function doStuff() {
@@ -128,38 +127,46 @@
 //     console.log("2");
 //   } catch(error){
 //     console.error("error")
-//   } 
 //   }
-  
+//   }
+
 //   doStuff();
 
+// assignment()
 
-function getValueWithDelay(value,delay){
-    return new Promise((resolve,reject)=>{
-        setTimeout(() => {
-            resolve(value)
-        }, delay);
-    })
-}
+// function getValueWithDelay(value,delay){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(() => {
+//             resolve(value)
+//         }, delay);
+//     })
+// }
 
-function getValueWithDelayError(value,delay){
-    return new Promise((resolve,reject)=>{
-        setTimeout(() => {
-            reject("error")
-        }, delay);
-    })
-}
+// function getValueWithDelayError(value,delay){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(() => {
+//             reject("error")
+//         }, delay);
+//     })
+// }
 
+// async function assignment(){
+//     try{
+//         const val =await getValueWithDelay(10,1000)
+//         console.log(val)
+//     } catch(e){
+//         console.error(e)
+//     }  finally{                   //executes no matter what
+//         console.log("finally")
+//     }
+// }
 
-async function assignment(){
-    try{
-        const val =await getValueWithDelay(10,1000)
-        console.log(val)
-    } catch(e){
-        console.error(e)
-    }  finally{                   //executes no matter what
-        console.log("finally")
-    }
-}
+//fetch
 
-assignment()
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
