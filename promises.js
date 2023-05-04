@@ -163,10 +163,19 @@
 
 //fetch
 
-fetch("https://jsonplaceholder.typicode.com/users")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-  });
+// fetch("https://jsonplaceholder.typicode.com/users")
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((data) => {
+//      console.log(data.map(user =>user.name))
+//   });
+
+//async await version
+
+async function api(){
+    const response = await fetch("https://jsonplaceholder.typicode.com/users")\
+    const data = await response.json()
+    console.log(users.map(user=>user.name))
+    }
+    api()
