@@ -189,18 +189,32 @@
 
 //send data to the server
 
-async function api() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+// async function api() {
+//   const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
 
-    body: JSON.stringify({
-      title: "NEW POST",
-    }),
-  });
-  const post = await response.json();
-  console.log(post);
+//     body: JSON.stringify({
+//       title: "NEW POST",
+//     }),
+//   });
+//   const post = await response.json();
+//   console.log(post);
+// }
+// api();
+
+const URL = "https://jsonplaceholder.typicode.com/comments?postId=1";
+
+async function doStuff() {
+  const response = await fetch(URL);
+  const data = await response.json();
+  console.log(data);
 }
-api();
+
+fetch(URL)
+  .then(res => res.json())
+  .then(comments => {
+    console.log(comments);
+  });
