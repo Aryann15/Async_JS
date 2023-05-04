@@ -174,8 +174,15 @@
 //async await version
 
 async function api(){
-    const response = await fetch("https://jsonplaceholder.typicode.com/users")\
+    try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/users")\
     const data = await response.json()
-    console.log(users.map(user=>user.name))
+    if(response.ok) //checks if the response is true of false
+    {console.log(users.map(user=>user.name))
     }
+    else{
+        console.log("FAILURE")
+    } }catch (e){
+    console.log("error")   //catch when to display error when we might enconter internet issues
+    }}
     api()
